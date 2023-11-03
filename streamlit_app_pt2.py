@@ -14,7 +14,7 @@ my_cur.execute("select color_or_style from catalog_for_website")
 my_catalog = my_cur.fetchall()
 
 #Turn Data into Dataframe
-df = pd.DataFrame(my_catalog
+df = pd.DataFrame(my_catalog)
 
 #write df into page to check
 streamlit.write(df)
