@@ -2,8 +2,7 @@
 import streamlit
 import pandas as pd
 import snowflake.connector
-#import requests as rq
-#from urllib.error import URLError
+
 
 streamlit.title("Zenas Amazing Athleisure Catalog")
 
@@ -11,9 +10,9 @@ streamlit.title("Zenas Amazing Athleisure Catalog")
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor
 
-my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
-my_data_row = my_cur.fetchone()
+my_cur.execute("select color_or_style from catalog_for_website")
+my_catalog = my_cur.fetchall()
 
 streamlit.text("Hello from Snowflake:")
-streamlit.text(my_data_row)
+streamlit.text(my_catalog)
 
